@@ -2,5 +2,5 @@
 using namespace std;
 int main()
 {
-    printf("Hello gitee\n");
+    printf("Hello world\n");
 }
