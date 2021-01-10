@@ -30,13 +30,11 @@ int main()
             int a, b;
             char c;
             scanf("\n%c%d%d", &c, &a, &b);
-            //D操作：对集合1中的x、y和集合2中的y、x分别进行合并操作
             if (c == 'D')
             {
                 Union(a, b + n);
                 Union(a + n, b);
             }
-            //A操作：判断x和y是否属于一个集合
             if (c == 'A')
             {
                 if (Find(a) == Find(b))

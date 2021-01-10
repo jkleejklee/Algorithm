@@ -4,20 +4,18 @@ using namespace std;
 const int N = 100005;
 struct SegmentTree
 {
-    int p;       //线段左端点
-    int r;       //线段右端点
-    long long k; //暂存子节点还需累加的值
-    long long s; //区间和
+    int p; 
+    int r;  
+    long long k; 
+    long long s; 
     SegmentTree() {}
-    SegmentTree(int a, int b) : p(a), r(b), k(0) {} // k初始值为0
+    SegmentTree(int a, int b) : p(a), r(b), k(0) {} 
 } T[3 * N];
 int A[N];
 long long ans;
-//构建求和线段树
 void build(int x, int p, int r)
 {
     T[x] = SegmentTree(p, r);
-    //如果为叶子节点，则s值等于对应A中的值
     if (p == r)
     {
         T[x].s = A[p];
@@ -25,10 +23,8 @@ void build(int x, int p, int r)
     }
     build(2 * x, p, (p + r) / 2);
     build(2 * x + 1, (p + r) / 2 + 1, r);
-    //否则s值等于左右儿子节点的s值之和
     T[x].s = T[x * 2].s + T[x * 2 + 1].s;
 }
-//根据父节点的k值更新子节点的s值和k值，完成后将父节点的k值置0
 void updatechild(int x)
 {
     if (T[x].k)
@@ -40,12 +36,10 @@ void updatechild(int x)
         T[x].k = 0;
     }
 }
-//给定区间[p,r]的元素每个加上c，依次更新各个节点的s值和k值
 void update(int x, int p, int r, long long c)
 {
     if (T[x].r < p || T[x].p > r)
         return;
-    //如果节点表示的区间完全在所求区间内，直接用节点的s值，而不用立刻更新该节点的所有子节点信息
     if (T[x].p >= p && T[x].r <= r)
     {
         T[x].s += (T[x].r - T[x].p + 1) * c;
@@ -58,15 +52,13 @@ void update(int x, int p, int r, long long c)
     update(x * 2 + 1, p, r, c);
     T[x].s = T[x * 2].s + T[x * 2 + 1].s;
 }
-//查询区间[p,r]的累加和
 void query(int x, int p, int r)
 {
     if (T[x].r < p || T[x].p > r)
         return;
-    //如果所查询的节点表示的区间完全在所求区间内，直接用节点的s值，而不用立刻更新该节点的所有子节点信息
     if (T[x].p >= p && T[x].r <= r)
     {
-        ans += T[x].s; //将累加和放入ans中
+        ans += T[x].s; 
         return;
     }
     updatechild(x);

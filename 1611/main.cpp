@@ -7,7 +7,6 @@ int Find(int x)
 {
     return (p[x] < 0) ? x : Find(p[x]);
 }
-//改进的合并操作，在合并的同时，将子节点集合的个数加到父节点集合的个数值上，使得父节点的P值保存合并后元素的个数
 void Union(int x, int y)
 {
     x = Find(x);
@@ -39,7 +38,7 @@ int main()
                 Union(a, b);
             }
         }
-        printf("%d\n", -p[Find(0)]); //在合并过程中，始终累加的数量为负值，最后对该值取反就是集合中元素的数量
+        printf("%d\n", -p[Find(0)]); 
     }
     return 0;
 }
