@@ -8,23 +8,31 @@ int main()
     scanf("%d", &t);
     while (t--)
     {
-        int ans = 1;
         int n;
         scanf("%d", &n);
         pair<int, int> a[N];
         for (int i = 0; i < n; i++)
             scanf("%d%d", &a[i].first, &a[i].second);
         sort(a, a + n);
-        int D[N];
+        int k = 0;
+        int d[N];
         for (int i = 0; i < n; i++)
         {
-            D[i] = 1;
-            for (int j = 0; j < i; j++)
-                if (a[j].second > a[i].second)
-                    D[i] = max(D[i], D[j] + 1);
-            ans = max(ans, D[i]);
+            int p = -1;
+            int r = k;
+            while (r - p > 1)
+            {
+                int mid = (p + r) / 2;
+                if (d[mid] > a[i].second)
+                    p = mid;
+                else
+                    r = mid;
+            }
+            d[r] = a[i].second; 
+            if (r == k)
+                k++;
         }
-        printf("%d\n", ans);
+        printf("%d\n", k);
     }
     return 0;
 }
