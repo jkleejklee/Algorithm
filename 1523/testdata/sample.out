@@ -1,0 +1,9 @@
+Network #1
+  SPF node 3 leaves 2 subnets
+
+Network #2
+  No SPF nodes
+
+Network #3
+  SPF node 2 leaves 2 subnets
+  SPF node 3 leaves 2 subnets
