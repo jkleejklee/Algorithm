@@ -2,12 +2,12 @@
 #include <cstring>
 #include <algorithm>
 using namespace std;
-char a[200]; //输入序列
-char b[200]; //输出序列
-bool v[200]; //记录序列中字母是否被使用
+char a[200]; 
+char b[200]; 
+bool v[200]; 
 void perm(unsigned int k)
 {
-    char c = '\0'; //记录本层递归使用的字母
+    char c = '\0'; 
     if (k == strlen(a))
     {
         b[k] = '\0';
