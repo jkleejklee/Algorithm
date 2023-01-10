@@ -10,7 +10,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "K:\\mingw64\\bin\\gcc.exe",
+            "compilerPath": "E:/CB_20221210_rev13107_win64/mingw64/bin/g++.exe",
             "intelliSenseMode": "gcc-x64"
         }
     ],
